@@ -31,6 +31,7 @@
 --#:计算数据的长度
 --线程跟协程的区别：线程可以同时多个运行，而协程任意时刻只能运行一个，并且处于运行状态的协程只有被挂起（suspend）时才会暂停。
 --【循环语句】
+--提示：循环在表达式后必须带do，且最后以end收尾。
 --[[
 <while>:
 语法：
@@ -63,9 +64,34 @@ until(执行条件)
 提示：当执行条件为真的时候结束。
 -]]
 --循环控制语句：break。用于控制程序的流程。退出当前循环或语句，并开始执行后面的语句。
+--【流程控制】
+--提示：1.条件表达式可以是任何值，false和nil为假，true和非nil为真。2.if后面必须带then，最后以end收尾。
+--[[
+<if>:
+语法：
+if(布尔表达式)
+then
+	<执行体>
+end
+<if...else>:
+if(布尔表达式)
+then
+	<true->执行体>
+else
+	<false->执行体>
+end
+<if...elseif...else>:
+语句：
+if(布尔表达式) then
+	<true->执行体>
+elseif(布尔表达式) then
+	<true->执行体>
+else
+	<false->执行体>
+--]]
 --【实例】
 --泛型for循环的使用：
-a = {"女人","都是","大骗子"}
+a = {"女人","都是","好好好"}
 for key,val in ipairs(a) do
 	print("索引值："..key.."--元素值："..val)
 end
@@ -75,3 +101,15 @@ repeat
 	b = b + 1
 until(b == 10)
 print(b)
+
+if(100.000) then
+print("0为真")
+end
+
+if(#a == 4) then
+print("a的长度为"..#a)
+elseif (#a == 5) then
+print("a的长度为"..#a)
+else
+print("a的长度为"..#a)
+end
