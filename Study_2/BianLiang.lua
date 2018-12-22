@@ -1,11 +1,12 @@
 BianLiang = {}
+print(BianLiang[0])
 --变量作用域
 BianLiang.a = "BianLiang a"
 local b = 66
-
+BianLiang.out = 666
 function joke()
-c = 5
-local d = 6
+c = 5               --全局变量
+local d = 6         --局部变量
 print("b " .. b)
 end
 
