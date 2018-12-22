@@ -9,8 +9,8 @@ array[1] = 1
 array[2] = 2
 print(array[2])
 
-array["a"] = a
-array["b"] = b
+array["a"] = "a"
+array["b"] = "b"
 print(array["a"])
 
 
