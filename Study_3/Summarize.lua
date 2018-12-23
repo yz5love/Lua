@@ -88,6 +88,57 @@ elseif(布尔表达式) then
 	<true->执行体>
 else
 	<false->执行体>
+end
+--]]
+--【Lua函数】
+--<用途>：
+--[[
+1.作为调用语句使用。完成指定的任务。
+2.作为赋值语句的表达式使用。计算并返回值。
+--]]
+--<语法>：
+--[[
+作用域 function 函数名称（可选的参数）
+	<执行体>
+	return 函数返回值（Lua中函数可以返回多个值）
+end
+--]]
+--提示：
+--1.函数可以作为参数传递给函数
+--2.函数可以返回多个结果值
+--3.函数的参数可以传入一串可变的参数。
+--使用“...”表示。使用“#...】可获取参数的数量，同样“select('#',...)】也可以。
+--使用“select(索引,...)，可获索引值对应的参数。
+--【运算符】
+--<算术运算符>
+--[[
++:加
+-:减
+*:乘
+/:除
+%:取余
+^:幂
+-:符（符号与减一样）
+--]]
+--<关系运算符>
+--[[
+==:等于
+~=:不等于（不是用!=，哈哈哈哈）
+>:大于
+<:小于
+>=:大于等于
+<=:小于等于
+--]]
+--<逻辑运算符>
+--[[
+and:逻辑与（等同于C#中的&&）
+or:逻辑或（等同于C#中的||）
+not:逻辑非（等同于C#中的!取反）
+--]]
+--<其他运算符>
+--[[
+..:连接2个字符串
+#:一元运算符。返回字符串或表的长度
 --]]
 --【实例】
 --泛型for循环的使用：
@@ -112,4 +163,36 @@ elseif (#a == 5) then
 print("a的长度为"..#a)
 else
 print("a的长度为"..#a)
+end
+
+--函数function的使用
+local myData = require("MyData")
+
+local function MyFunction(name,age,myData)
+	if(myData == nil) then
+		return "myData为空！"
+	elseif(myData.Name == "杨志") then
+		return myData.Name,myData.Age
+	elseif(name == "yz" and age == 25) then
+		return name,age
+	else
+		return "你输入的名字是："..name.."，年龄是："..age
+	end
+end
+print(MyFunction("qq",10))
+print(MyFunction("yz",25))
+print(MyFunction("yz",25,myData))
+--函数可变参数的使用
+print("->函数可变参数的使用：")
+
+local function MyFunction2(...)
+	local _data = select(3,...)
+	print("参数的数量：".._data.Age)
+	print(...)
+end
+MyFunction2("yz",age,myData)
+--逻辑非的使用。相当于C#中的使用感叹号取反一样
+b = false
+if(not b) then
+	print("使用not取反")
 end
